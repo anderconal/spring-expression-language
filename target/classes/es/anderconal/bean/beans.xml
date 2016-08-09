@@ -4,8 +4,15 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="pikachu" class="es.anderconal.modelo.Pokemon">
-		<property name="id" value="1234"></property>
-		<property name="ataque" value="Rapidez"></property>
+		<!-- Property with XML <property name="id" value="1234"></property> -->
+		<property name="id" value="#{4321}"></property>
+		
+		<!-- Property with XML <property name="ataque" value="Rapidez"></property> -->
+		
+		<!-- String property with SpEL <property name="ataque" value="#{'Ama' + 'go'}"></property> -->
+		
+		<!-- Calling other bean´s method with SpEL -->
+		<property name="ataque" value="#{ataqueAleatorio.getAtaque()}"></property>
 	</bean>
 
 	<bean id="ataqueAleatorio" class="es.anderconal.modelo.AtaqueAleatorio"></bean>
